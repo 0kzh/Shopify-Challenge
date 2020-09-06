@@ -65,6 +65,7 @@ function Home(props: Props) {
 
     const getPosts = async () => {
         const { data, status } = await axios.get("/posts");
+        console.log(data);
         if (status === 200) {
             setPosts(data);
         }
@@ -127,6 +128,8 @@ function Home(props: Props) {
                                     <img src={post.image.url} />
                                 </a>
                                 <div className="jg-caption">
+                                    <img src={post.account.avatar.thumb.url} />
+                                    
                                     {post.account.username}
                                 </div>
                             </div>

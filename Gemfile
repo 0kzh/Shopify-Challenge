@@ -22,6 +22,7 @@ gem 'jbuilder', '~> 2.7'
 
 # user auth
 gem 'devise'
+gem 'paperclip'
 
 # react integration
 gem 'react-rails'
