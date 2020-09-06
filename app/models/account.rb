@@ -15,6 +15,8 @@ class Account < ApplicationRecord
     end
   end
 
+  has_many :posts
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, 
          :validatable, authentication_keys: [:login]

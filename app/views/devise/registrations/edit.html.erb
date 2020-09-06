@@ -4,13 +4,15 @@
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="field">
-    <%= f.label :username %><br />
-    <%= f.username :username, autofocus: true %>
+    <%= f.text_field :username, autofocus: true, placeholder: "Username" %>
+  </div>
+  
+  <div class="field">
+    <%= f.text_field :name, placeholder: "Full Name" %>
   </div>
 
   <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autocomplete: "email" %>
+    <%= f.email_field :email, autocomplete: "email", placeholder: "Email" %>
   </div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>

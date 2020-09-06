@@ -23,6 +23,9 @@ gem 'jbuilder', '~> 2.7'
 # user auth
 gem 'devise'
 
+# react integration
+gem 'react-rails'
+
 # file uploading
 gem 'carrierwave', '~> 2.0'
 gem 'fog'
