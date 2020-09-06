@@ -1,0 +1,35 @@
+.wrapper {
+    width: 100%;
+    height: auto;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.content {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    max-width: calc(400px + 2rem);
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    margin: 10px 0 !important;
+}
+
+.logo {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 20px;
+}
+
+span {
+    text-align: center;
+    margin-top: 10px;
+}

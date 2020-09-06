@@ -1,0 +1,57 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+@import "accounts.scss";
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap");
+@import "~bootstrap/dist/css/bootstrap.min.css";
+
+body {
+    font-family: "Open Sans", "Segoe UI", sans-serif;
+}
+
+.button {
+    color: #24292e;
+    background-color: #fafbfc;
+    box-shadow: 0 1px 0 rgba(27, 31, 35, 0.04),
+        inset 0 1px 0 hsla(0, 0%, 100%, 0.25);
+    transition: background-color 0.2s cubic-bezier(0.3, 0, 0.5, 1);
+    border: 1px solid rgba(27, 31, 35, 0.15);
+    outline: none;
+    padding: 8px 16px;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 20px;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border-radius: 6px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin-top: 10px;
+    &:hover {
+        background-color: #f3f4f6;
+        transition-duration: 0.1s;
+    }
+}
+
+.button-full {
+    width: 100%;
+}
