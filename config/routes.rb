@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   get "/dashboard" => "accounts#index"
 
-  resources :posts, only: [:new, :create, :show]
+  resources :posts, only: [:index, :new, :create, :show]
 
   root 'homepage#index'
 end

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import axios from "axios";
 import {
     Container,
     Button,
@@ -26,11 +27,12 @@ const logo = require("../../assets/images/logo.svg");
 
 interface Props {
     userId: string | null;
-    posts: any;
 }
 
 function Home(props: Props) {
-    const { userId, posts } = props;
+    const { userId } = props;
+
+    const [posts, setPosts] = useState([]);
 
     useEffect(() => {
         var GALLERY_FADE_IN = 500;
@@ -60,6 +62,17 @@ function Home(props: Props) {
 
         $("#gallery").fadeIn(GALLERY_FADE_IN);
     }, [posts]);
+
+    const getPosts = async () => {
+        const { data, status } = await axios.get("/posts");
+        if (status === 200) {
+            setPosts(data);
+        }
+    };
+
+    useEffect(() => {
+        getPosts();
+    }, []);
 
     const preventAction = (e) => {
         e.preventDefault();
@@ -113,6 +126,9 @@ function Home(props: Props) {
                                 <a className="swipebox" href={post.image.url}>
                                     <img src={post.image.url} />
                                 </a>
+                                <div className="jg-caption">
+                                    {post.account.username}
+                                </div>
                             </div>
                         ))}
                         </div>

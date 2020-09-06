@@ -1,4 +1,9 @@
 class PostsController < ApplicationController
+    
+    def index
+        posts = Post.all
+        render :json => posts.to_json(:include => :account)
+    end
 
     def new
         @post = Post.new
@@ -13,9 +18,6 @@ class PostsController < ApplicationController
         else
             redirect_to new_post_path, flash: { dangeR: "Error saving post" }
         end
-    end
-
-    def show
     end
 
     private

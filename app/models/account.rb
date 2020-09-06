@@ -1,4 +1,5 @@
 class Account < ApplicationRecord
+  mount_uploader :avatar, AvatarUploader
   attr_writer :login
 
   def login
