@@ -57,8 +57,8 @@ function Gallery(props: Props) {
                 <div id="gallery" style={{ display: 'none', marginBottom: 20 }}>
                 {posts.map(post => (
                     <div key={post.id} className="gallery-item">
-                        <a className="swipebox" href={post.image.url}>
-                            <img src={post.image.url} />
+                        <a className="swipebox" href={post.image.display.url}>
+                            <img src={post.image.thumb.url} />
                         </a>
                         <div className="jg-caption" style={styles.horizontalSplit}>
                             { showAvatar &&

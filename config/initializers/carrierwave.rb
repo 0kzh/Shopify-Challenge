@@ -1,3 +1,24 @@
+module CarrierWave
+  module MiniMagick
+    def quality(percentage)
+      manipulate! do |img|
+        img.quality(percentage.to_s)
+        img = yield(img) if block_given?
+        img
+      end
+    end
+    def resize_to_width(width, height)
+      manipulate! do |img|
+        if img[:width] >= width
+          img.resize "#{width}x#{img[:height]}"
+        end
+        img = yield(img) if block_given?
+        img
+      end
+    end
+  end
+end
+
 CarrierWave.configure do |config|
     config.fog_credentials = {
       provider:              'AWS',
