@@ -1,5 +1,5 @@
 class AccountsController < ApplicationController
-    before_action :set_account, only: [:profile, :profile_data]
+    before_action :set_account, only: [:profile]
     def index
         # user feed
         @posts = Post.active
@@ -7,7 +7,7 @@ class AccountsController < ApplicationController
     
     def profile
         # user profile
-        @posts = Post.find_by_account_id(params[:id]) 
+        @posts = Post.find_by_account_id(params[:id])
     end
 
     def set_account
