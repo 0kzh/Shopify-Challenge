@@ -20,7 +20,7 @@ RUN yarn install --check-files
 
 COPY . /app
 
-# Clear existing server.pid
+# Clear existing server.pid, also create/migrate db
 COPY entrypoint.sh /usr/bin/
 RUN chmod +x /usr/bin/entrypoint.sh
 ENTRYPOINT ["entrypoint.sh"]

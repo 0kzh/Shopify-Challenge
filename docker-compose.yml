@@ -13,5 +13,7 @@ services:
       - .:/app
     ports:
       - "3000:3000"
+    environment:
+      DATABASE_HOST: db
     depends_on:
       - db
