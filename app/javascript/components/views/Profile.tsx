@@ -11,30 +11,33 @@ interface Props {
     account: any;
 }
 
-const Home = (props: Props) => {
+const Profile = (props: Props) => {
     const { account } = props;
 
     const [posts, setPosts] = useState([]);
+    const [accountData, setAccountData] = useState(null);
 
-    const getPosts = async () => {
-        const { data, status } = await axios.get("/api/v1/posts");
+    const getAccountData = async () => {
+        const { data, status } = await axios.get(`/api/v1/account/${account.username}`);
+        console.log(data);
         if (status === 200) {
-            setPosts(data);
+            setAccountData(data.profile);
+            setPosts(data.posts);
         }
-    };
+    }
 
     useEffect(() => {
-        getPosts();
+        getAccountData();
     }, []);
 
     return (
         <div>
             <Navbar account={account} />
             <Container>
-                <Gallery posts={posts} />
+                <Gallery posts={posts} showAvatar={false} />
             </Container>
         </div>
     );
 }
 
-export default Home;
+export default Profile;

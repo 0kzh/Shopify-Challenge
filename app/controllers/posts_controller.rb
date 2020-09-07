@@ -1,10 +1,4 @@
 class PostsController < ApplicationController
-    
-    def index
-        posts = Post.all
-        render :json => posts.to_json(:include => :account)
-    end
-
     def new
         @post = Post.new
     end
@@ -16,7 +10,7 @@ class PostsController < ApplicationController
         if @post.save
             redirect_to dashboard_path, flash: { success: "Post was created successfully" }
         else
-            redirect_to new_post_path, flash: { dangeR: "Error saving post" }
+            redirect_to new_post_path, flash: { danger: "Error saving post" }
         end
     end
 
@@ -25,5 +19,4 @@ class PostsController < ApplicationController
     def post_params
         params.require(:post).permit(:image, :image_cache)
     end
-
 end

@@ -14,16 +14,16 @@ import {
     DropdownItem,
 } from "reactstrap";
 
+import { NEW_PHOTO_ROUTE, PROFILE_PATH, LOGOUT_PATH, LOGIN_PATH, SIGNUP_PATH } from '../helpers/constants';
+
 const logo = require("../../assets/images/logo.svg");
 
 interface Props {
     account: any;
-    profilePath: string;
-    logoutPath: string;
 };
 
 function GlobalNavbar(props: Props) {
-    const { account, profilePath, logoutPath } = props
+    const { account } = props
 
     const preventAction = (e) => {
         e.preventDefault();
@@ -31,16 +31,16 @@ function GlobalNavbar(props: Props) {
     };
     
     const signOut = async () => {
-        if (logoutPath) {
-            axios.delete(logoutPath)
-        }
+        axios.delete(LOGOUT_PATH)
     };
     
     const viewProfile = async (username) => {
-        if (profilePath) {
-            window.location.href = profilePath + username;
-        }
+        window.location.href = PROFILE_PATH + username;
     }
+
+    const newPhoto = async () => {
+        window.location.href = NEW_PHOTO_ROUTE;
+    };
 
     return (
         <Navbar>
@@ -58,8 +58,8 @@ function GlobalNavbar(props: Props) {
             {
                 account ?
                 <Nav style={styles.vCenter}>
-                    <NavItem>
-                        <Button>Add a photo</Button>
+                    <NavItem style={styles.withDivider}>
+                        <Button onClick={newPhoto}>Add a photo</Button>
                     </NavItem>
                     <UncontrolledDropdown nav inNavbar>
                         <DropdownToggle nav>
@@ -78,12 +78,12 @@ function GlobalNavbar(props: Props) {
                 :
                 <Nav style={styles.vCenter}>
                     <NavItem style={styles.withDivider}>
-                        <Button>Add a photo</Button>
+                        <Button onClick={newPhoto}>Add a photo</Button>
                     </NavItem>
-                    <NavLink href="/accounts/sign_in">
+                    <NavLink href={LOGIN_PATH}>
                         <Button color="link">Log in</Button>
                     </NavLink>
-                    <NavLink href="/accounts/sign_up">
+                    <NavLink href={SIGNUP_PATH}>
                         <Button color="primary">Join for free</Button>
                     </NavLink>
                 </Nav>
