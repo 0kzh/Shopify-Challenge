@@ -2,19 +2,10 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import {
     Container,
-    Button,
-    Input,
-    Navbar,
-    NavbarBrand,
-    Nav,
-    NavItem,
-    NavLink,
-    UncontrolledDropdown,
-    DropdownToggle,
-    DropdownMenu,
-    DropdownItem,
 } from "reactstrap";
 import $ from "jquery";
+
+import Navbar from '../Navbar';
 
 import { DownloadIcon } from '@primer/octicons-react';
 
@@ -24,8 +15,6 @@ import "justifiedGallery/dist/css/justifiedGallery.min.css";
 
 import "magnific-popup/dist/jquery.magnific-popup.min.js";
 import "magnific-popup/dist/magnific-popup.css";
-
-const logo = require("../../assets/images/logo.svg");
 
 interface Props {
     account: any;
@@ -85,64 +74,15 @@ function Home(props: Props) {
         $("#gallery").fadeIn(GALLERY_FADE_IN);
     }, [posts]);
 
-    const preventAction = (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-    };
-
-    const signOut = async () => {
-        if (logoutPath) {
-            axios.delete(logoutPath)
-        }
-    };
-
-    const viewProfile = async () => {
+    const viewProfile = async (username) => {
         if (profilePath) {
-            window.location.href = profilePath;
+            window.location.href = profilePath + username;
         }
     }
 
     return (
         <div>
-            <Navbar>
-                <NavbarBrand href="/">
-                    <Nav style={styles.vCenter}>
-                        <NavItem>
-                            <img src={logo} style={styles.logo} />
-                        </NavItem>
-                        <NavItem style={styles.title}>aperture</NavItem>
-                        <NavItem onClick={preventAction}>
-                            <Input type="text" placeholder="Search images..." />
-                        </NavItem>
-                    </Nav>
-                </NavbarBrand>
-                {
-                    account ?
-                    <Nav style={styles.vCenter}>
-                        <UncontrolledDropdown nav inNavbar>
-                            <DropdownToggle nav>
-                                <img src={account.avatar.thumb.url} style={styles.avatar} />
-                            </DropdownToggle>
-                            <DropdownMenu right>
-                                <DropdownItem onClick={viewProfile}>
-                                My profile
-                                </DropdownItem>
-                                <DropdownItem onClick={signOut}>
-                                Log out
-                                </DropdownItem>
-                            </DropdownMenu>
-                        </UncontrolledDropdown>
-                    </Nav>
-                    :
-                    <Nav style={styles.vCenter}>
-                        <NavLink href="/accounts/sign_in">Log in</NavLink>
-                        <NavLink href="/accounts/sign_up">
-                            <Button color="primary">Join for free</Button>
-                        </NavLink>
-                    </Nav>
-                }
-            </Navbar>
-
+            <Navbar account={account} profilePath={profilePath} logoutPath={logoutPath} />
             <Container>
                 <div className="wrap">
                     <div className="photoStreamTitle">
@@ -153,10 +93,10 @@ function Home(props: Props) {
                                     <img src={post.image.url} />
                                 </a>
                                 <div className="jg-caption" style={styles.horizontalSplit}>
-                                    <a href={'/accounts/' + post.account.username}>
+                                    <div style={styles.clickable} onClick={() => viewProfile(post.account.username)}>
                                         <img src={post.account.avatar.thumb.url} style={styles.thumb} />
                                         <span style={styles.name}>{post.account.username}</span>
-                                    </a>
+                                    </div>
                                     <div style={styles.clickable}>
                                         <DownloadIcon />
                                     </div>
