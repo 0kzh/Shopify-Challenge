@@ -19,7 +19,6 @@ const Profile = (props: Props) => {
 
     const getAccountData = async () => {
         const { data, status } = await axios.get(`/api/v1/account/${account.username}`);
-        console.log(data);
         if (status === 200) {
             setAccountData(data.profile);
             setPosts(data.posts);
@@ -48,7 +47,7 @@ const Profile = (props: Props) => {
 const styles = {
     profileDetails: {
         display: 'flex',
-        flexDirection: 'column',
+        flexDirection: 'column' as 'column',
         alignItems: 'center',
         justifyContent: 'center',
         marginTop: 50,

@@ -70,9 +70,9 @@ function GlobalNavbar(props: Props) {
                                 Edit profile
                             </DropdownItem>
                             <DropdownItem>
-                                <a href="/accounts/sign_out" data-method="delete" rel="nofollow" style={styles.noStyle}>
+                                <NavLink href="/accounts/sign_out" style={styles.noStyle} data-method="delete" rel="nofollow">
                                     Log out
-                                </a>
+                                </NavLink>
                             </DropdownItem>
                         </DropdownMenu>
                     </UncontrolledDropdown>
@@ -124,6 +124,7 @@ const styles = {
     noStyle: {
         color: "black",
         textDecoration: "none",
+        padding: 0,
     }
 };
 

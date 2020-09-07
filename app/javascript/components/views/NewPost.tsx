@@ -92,7 +92,7 @@ const NewPost = (props: Props) => {
 const styles = {
     preview: {
         display: 'flex',
-        flexDirection: 'column',
+        flexDirection: 'column' as 'column',
         alignItems: 'center',
         justifyContent: 'center',
         paddingTop: 100,
@@ -113,7 +113,7 @@ const styles = {
         border: '1px dashed rgba(0, 0, 0, 0.2)',
         borderRadius: 6,
         display: 'flex',
-        flexDirection: 'column',
+        flexDirection: 'column' as 'column',
         alignItems: 'center',
         justifyContent: 'center',
         marginTop: 50,
