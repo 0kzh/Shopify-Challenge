@@ -24,11 +24,17 @@ const NewPost = (props: Props) => {
     const { account } = props;
 
     const [selectedFile, setSelectedFile] = useState(null);
+    const [fileDetails, setFileDetails] = useState(null);
 
     const sendImageToController = async (payload) => {
-        const { data, status } = await axios.post(`/posts`, payload);
-        if (status === 200) {
-            window.location = HOME_ROUTE
+        const csrf = document.querySelector("meta[name='csrf-token']").getAttribute("content");
+        const { data, status } = await axios.post(`/posts`, payload, { headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-Token': csrf,
+        }});
+        
+        if (status === 201) {
+            window.location.href = HOME_ROUTE
         } else {
             alert('Error uploading image :(')
         }
@@ -36,16 +42,17 @@ const NewPost = (props: Props) => {
 
     const uploadFile = () => {
         let formPayload = new FormData();
-        formPayload.append('image', selectedFile);
+        formPayload.append('post[image]', selectedFile);
         sendImageToController(formPayload);
     }
 
     const processFile = (file) => {
-        Object.assign(file, {
+        const details = {
             preview: file['type'].split('/')[0] === 'image' ? URL.createObjectURL(file) : null,
             formattedSize: formatBytes(file.size, 0),
-        });
+        };
         setSelectedFile(file)
+        setFileDetails(details);
     };
 
     return (
@@ -58,8 +65,8 @@ const NewPost = (props: Props) => {
                             <div {...getRootProps()} style={{ width: '100%' }}>
                                 <input {...getInputProps()} />
                                 <div style={styles.preview}>
-                                    <img src={selectedFile ? selectedFile.preview : newPhoto} style={styles.thumbnail}/>
-                                    <h2 style={styles.fileName}>{selectedFile ? `${selectedFile.name} (${selectedFile.formattedSize})` :
+                                    <img src={fileDetails ? fileDetails.preview : newPhoto} style={styles.thumbnail}/>
+                                    <h2 style={styles.fileName}>{selectedFile && fileDetails ? `${selectedFile.name} (${fileDetails.formattedSize})` :
                                         <div>
                                             <div>Drag and drop an image here</div>
                                             <div>or click to select a file</div>

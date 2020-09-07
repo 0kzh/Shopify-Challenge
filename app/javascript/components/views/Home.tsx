@@ -24,6 +24,7 @@ const Home = (props: Props) => {
     const getPosts = async () => {
         const { data, status } = await axios.get("/api/v1/posts");
         if (status === 200) {
+            console.log(data);
             setPosts(data);
         }
     };
