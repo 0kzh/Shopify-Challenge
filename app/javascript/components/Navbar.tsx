@@ -30,10 +30,6 @@ function GlobalNavbar(props: Props) {
         e.stopPropagation();
     };
     
-    const signOut = async () => {
-        axios.delete(LOGOUT_PATH)
-    };
-    
     const viewProfile = async (username) => {
         window.location.href = PROFILE_PATH + username;
     }
@@ -66,8 +62,10 @@ function GlobalNavbar(props: Props) {
                             <DropdownItem onClick={() => viewProfile(account.username)}>
                                 My profile
                             </DropdownItem>
-                            <DropdownItem onClick={signOut}>
-                                Log out
+                            <DropdownItem>
+                                <a href="/accounts/sign_out" data-method="delete" rel="nofollow" style={styles.noStyle}>
+                                    Log out
+                                </a>
                             </DropdownItem>
                         </DropdownMenu>
                     </UncontrolledDropdown>
@@ -116,6 +114,10 @@ const styles = {
         marginLeft: 30,
         marginRight: 30,
     },
+    noStyle: {
+        color: "black",
+        textDecoration: "none",
+    }
 };
 
 export default GlobalNavbar

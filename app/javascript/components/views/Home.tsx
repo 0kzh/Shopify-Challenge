@@ -49,10 +49,10 @@ const Home = (props: Props) => {
             <Jumbotron style={bgStyle}>
                 <Container style={styles.jumbotronStyle}>
                     <h1>aperture</h1>
-                    <p className="lead">
+                    <div className="lead" style={{ marginBottom: 20 }}>
                         <div>A social network for photographers to</div>
                         <div>create, discover, and share visual photo portfolios</div>
-                    </p>
+                    </div>
                     <Button color="primary" onClick={newPhoto}>Get Started</Button>
                 </Container>
             </Jumbotron>
