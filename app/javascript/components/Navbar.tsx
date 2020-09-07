@@ -14,7 +14,7 @@ import {
     DropdownItem,
 } from "reactstrap";
 
-import { NEW_PHOTO_ROUTE, PROFILE_PATH, LOGOUT_PATH, LOGIN_PATH, SIGNUP_PATH } from '../helpers/constants';
+import { NEW_PHOTO_ROUTE, PROFILE_PATH, EDIT_PROFILE_PATH, LOGIN_PATH, SIGNUP_PATH } from '../helpers/constants';
 
 const logo = require("../../assets/images/logo.svg");
 
@@ -32,6 +32,10 @@ function GlobalNavbar(props: Props) {
     
     const viewProfile = async (username) => {
         window.location.href = PROFILE_PATH + username;
+    }
+
+    const editProfile = async () => {
+        window.location.href = EDIT_PROFILE_PATH;
     }
 
     const newPhoto = async () => {
@@ -61,6 +65,9 @@ function GlobalNavbar(props: Props) {
                         <DropdownMenu right>
                             <DropdownItem onClick={() => viewProfile(account.username)}>
                                 My profile
+                            </DropdownItem>
+                            <DropdownItem onClick={() => editProfile()}>
+                                Edit profile
                             </DropdownItem>
                             <DropdownItem>
                                 <a href="/accounts/sign_out" data-method="delete" rel="nofollow" style={styles.noStyle}>

@@ -33,3 +33,35 @@ span {
     text-align: center;
     margin-top: 10px;
 }
+
+.full-height {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.flex-fill {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.avatar {
+    display: block;
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    margin: 0 auto;
+}
+
+.centered {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+input[type="file"] {
+    text-align: center;
+    margin: 20px 0;
+}
