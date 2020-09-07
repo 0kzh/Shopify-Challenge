@@ -50,9 +50,6 @@ function GlobalNavbar(props: Props) {
                         <img src={logo} style={styles.logo} />
                     </NavItem>
                     <NavItem style={styles.title}>aperture</NavItem>
-                    <NavItem onClick={preventAction}>
-                        <Input type="text" placeholder="Search images..." />
-                    </NavItem>
                 </Nav>
             </NavbarBrand>
             {
