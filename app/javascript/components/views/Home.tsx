@@ -31,7 +31,7 @@ const Home = (props: Props) => {
         <div>
             <Navbar account={account} />
             <Container>
-                <Gallery posts={posts} />
+                <Gallery posts={posts} showAvatar={true} />
             </Container>
         </div>
     );
