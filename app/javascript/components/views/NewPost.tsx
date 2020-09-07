@@ -4,10 +4,7 @@ import axios from "axios";
 import {
     Button,
     Container,
-    Card,
-    Row,
-    Col,
-    Link,
+    Spinner,
 } from "reactstrap";
 
 import { formatBytes } from '../../helpers/utils';
@@ -25,6 +22,7 @@ const NewPost = (props: Props) => {
 
     const [selectedFile, setSelectedFile] = useState(null);
     const [fileDetails, setFileDetails] = useState(null);
+    const [uploading, setUploading] = useState(false);
 
     const sendImageToController = async (payload) => {
         const csrf = document.querySelector("meta[name='csrf-token']").getAttribute("content");
@@ -32,15 +30,18 @@ const NewPost = (props: Props) => {
             'Content-Type': 'application/json',
             'X-CSRF-Token': csrf,
         }});
-        
+
         if (status === 201) {
             window.location.href = HOME_ROUTE
         } else {
             alert('Error uploading image :(')
         }
+
+        setUploading(false);
     }
 
     const uploadFile = () => {
+        setUploading(true);
         let formPayload = new FormData();
         formPayload.append('post[image]', selectedFile);
         sendImageToController(formPayload);
@@ -77,7 +78,12 @@ const NewPost = (props: Props) => {
                         </section>
                     )}
                 </Dropzone>
-                <Button style={styles.uploadBtn} onClick={uploadFile}>Upload Image</Button>
+                {
+                    uploading ?
+                    <Button style={{...styles.uploadBtn, ...styles.progress}}><Spinner color="dark" /></Button>
+                    :
+                    <Button style={styles.uploadBtn} onClick={uploadFile}>Upload Image</Button>
+                }
             </Container>
         </div>
     );
@@ -115,7 +121,10 @@ const styles = {
     uploadBtn: {
         width: '100%',
         marginTop: 10,
-    }
+    },
+    progress: {
+        cursor: 'default',
+    },
 }
 
 export default NewPost;
