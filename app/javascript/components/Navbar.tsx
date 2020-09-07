@@ -58,6 +58,9 @@ function GlobalNavbar(props: Props) {
             {
                 account ?
                 <Nav style={styles.vCenter}>
+                    <NavItem>
+                        <Button>Add a photo</Button>
+                    </NavItem>
                     <UncontrolledDropdown nav inNavbar>
                         <DropdownToggle nav>
                             <img src={account.avatar.thumb.url} style={styles.avatar} />
@@ -74,7 +77,12 @@ function GlobalNavbar(props: Props) {
                 </Nav>
                 :
                 <Nav style={styles.vCenter}>
-                    <NavLink href="/accounts/sign_in">Log in</NavLink>
+                    <NavItem style={styles.withDivider}>
+                        <Button>Add a photo</Button>
+                    </NavItem>
+                    <NavLink href="/accounts/sign_in">
+                        <Button color="link">Log in</Button>
+                    </NavLink>
                     <NavLink href="/accounts/sign_up">
                         <Button color="primary">Join for free</Button>
                     </NavLink>
@@ -103,6 +111,10 @@ const styles = {
         width: 36,
         borderRadius: '50%',
     },
+    withDivider: {
+        borderRight: '1px solid #D9DBDB',
+        paddingRight: 20,
+    }
 };
 
 export default GlobalNavbar

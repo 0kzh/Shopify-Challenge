@@ -11,13 +11,16 @@
  * It is generally better to create a new file per style scope.
  *
  *= require_tree .
+ *= require bootstrap
  *= require_self
  */
 
+// @import "~bootstrap/dist/css/bootstrap.min.css";
+
 @import "accounts.scss";
 @import "caption.scss";
+@import "bootstrap_overrides.scss";
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap");
-@import "~bootstrap/dist/css/bootstrap.min.css";
 
 body {
     font-family: "Open Sans", "Segoe UI", sans-serif;
