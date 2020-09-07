@@ -31,7 +31,7 @@ const Profile = (props: Props) => {
     }, []);
 
     return (
-        <div>
+        <div style={styles.container}>
             <Navbar account={account} />
             <div style={styles.profileDetails}>
                 <img src={account.avatar.medium.url} style={styles.avatar} />
@@ -64,7 +64,10 @@ const styles = {
     },
     username: {
         color: '#bbbbbb',
-    }
+    },
+    container: {
+        marginBottom: 100,
+    },
 };
 
 export default Profile;

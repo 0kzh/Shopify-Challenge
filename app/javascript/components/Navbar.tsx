@@ -43,7 +43,7 @@ function GlobalNavbar(props: Props) {
     };
 
     return (
-        <Navbar>
+        <Navbar style={styles.navbar}>
             <NavbarBrand href="/">
                 <Nav style={styles.vCenter}>
                     <NavItem>
@@ -111,7 +111,11 @@ const styles = {
     withDivider: {
         borderRight: '1px solid #D9DBDB',
         paddingRight: 20,
-    }
+    },
+    navbar: {
+        marginLeft: 30,
+        marginRight: 30,
+    },
 };
 
 export default GlobalNavbar
