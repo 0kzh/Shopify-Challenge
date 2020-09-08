@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+    before_action :authenticate_account!, only: [:new] 
+
     def new
         @post = Post.new
     end
