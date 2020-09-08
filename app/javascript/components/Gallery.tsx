@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import $ from "jquery";
-import { DownloadIcon } from '@primer/octicons-react';
 import { PROFILE_PATH } from '../helpers/constants';
 
 // gallery modules
@@ -67,9 +66,6 @@ function Gallery(props: Props) {
                                     <span style={styles.name}>{post.account.username}</span>
                                 </div>
                             }
-                            <div style={styles.clickable}>
-                                <DownloadIcon />
-                            </div>
                         </div>
                     </div>
                 ))}
