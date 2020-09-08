@@ -98,7 +98,7 @@ const styles = {
         paddingTop: 100,
         paddingBottom: 100,
         width: '100%',
-        textAlign: 'center',
+        textAlign: 'center' as 'center',
         cursor: 'pointer',
     },
     fileName: {
