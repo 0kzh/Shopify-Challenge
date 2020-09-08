@@ -52,7 +52,7 @@ const Home = (props: Props) => {
                     <h1>aperture</h1>
                     <div className="lead" style={{ marginBottom: 20 }}>
                         <div>A social network for photographers to</div>
-                        <div>create, discover, and share visual photo apertures</div>
+                        <div>create, discover, and share visual photo portfolios</div>
                     </div>
                     <Button color="primary" onClick={newPhoto}>Get Started</Button>
                 </Container>
